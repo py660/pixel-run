@@ -1,0 +1,308 @@
+
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+    <title>Pixel Run</title>
+    <!--link href="style.css" rel="stylesheet" type="text/css" /-->
+    <link rel="preconnect" href="https://cdnjs.cloudfare.com">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+      /*@font-face { font-family: windows; font-weight: bold; src: url('windows_command_prompt.ttf');} BROKEN*/
+      /*@font-face { font-family: press-start; font-weight: bold; src: url('PrStart.ttf');}
+      @font-face { font-family: silkscreen; font-weight: bold; src: url('silkscr.ttf');} OLD*/
+      /*body{
+      font-family: press-start, Helvetica, sans-serif;
+      }*/
+      #title{
+      font-family: 'Press Start 2P', Helvetica, sans-serif;
+      }
+      .display{
+      height:200px;
+      background: black;
+      }
+      #hint{
+      opacity: 100%;
+      }
+    </style>
+    <style>
+      /*body {font-family: Arial, Helvetica, sans-serif;*/
+      /*overflow: hidden;*/}
+      button {cursor: pointer;}
+      /* The Modal (background) */
+      .modal {
+      display: none; /* Hidden by default */
+      position: fixed; /* Stay in place */
+      z-index: 5; /* Sit on top */
+      padding: auto; /* Location of the box */
+      left: 0;
+      top: 0;
+      width: 100%; /* Full width */
+      height: 100%; /* Full height */
+      overflow: auto; /* Enable scroll if needed */
+      background-color: rgb(0,0,0); /* Fallback color */
+      background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+      }
+      /* Modal Content */
+      .modal-content {
+      position: relative;
+      /*background-color: #000063;*/
+      color: white;
+      /*margin-top: 20%;*/
+      margin: auto;
+      align:center;
+      padding: 0;
+      border: 1px solid #888;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+      -webkit-animation-name: animatetop;
+      -webkit-animation-duration: 0.4s;
+      animation-name: animatetop;
+      animation-duration: 0.4s
+      }
+      /* Add Animation */
+      @-webkit-keyframes animatetop {
+      from {top:-300px; opacity:0} 
+      to {top:0; opacity:1}
+      }
+      @keyframes animatetop {
+      from {top:-300px; opacity:0}
+      to {top:0; opacity:1}
+      }
+      /* The Close Button */
+      .close {
+      color: white;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      }
+      .close:hover,
+      .close:focus {
+      color: #000;
+      text-decoration: none;
+      cursor: pointer;
+      }
+      .modal-body {padding: 2px 16px; background: #00102d/*#5cb85c*/;}
+    </style>
+      <script defer async src="https://track.python660.repl.co/script.js"></script>
+  </head>
+  <body style="padding:0; margin:0; overflow:hidden;">
+    <div style="position:absolute; top:0; left:0; width:100%; height:5% + 20px; z-index:2; background: black; color:white; display:inline-block;">
+      <h2 id="title" style="display:inline-block;"><i class="fas fa-play"></i> <b style="color:#70a0e7;">Pixel</b><b style="color:#ec3b3b;">RUN</b></h2>
+      <!--button id="forcereset" style="display:inline-block;
+        background-color: black;/*#4CAF50;*/ /* Green */
+        border: 2px solid white;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px;">Reset location</button-->
+      <span class="display" style="border: 2px solid white; padding:10px; margin:5px;">
+        <h2 id="time" class="time" style="display:inline-block;"><i class="fas fa-stopwatch-20" style="color: #0066ff;"></i> N/A</h2>
+      </span>
+      <span  class="display" style="border: 2px solid white; padding:10px; margin:5px;">
+        <h2 id="collected" class="collected" style="display:inline-block;"></h2>
+        <h2 id="maxcollected" class="maxcollected" style="display:inline-block;"></h2>
+        <div class="coin" style="display:inline-block;"><i class="fas fa-coins" style="color: #ffcc00;"></i></div>
+      </span>
+      <span class="display" style="border: 2px solid white; padding:10px; margin:5px;">
+        <h2 id="deathcount" class="deathcount" style="display:inline-block;"></h2>
+        <div class="deaths" style="display:inline-block;"><i class="fas fa-skull" style="color: #cc0000;"></i></div>
+      </span>
+      <span class="display" style="border: 2px solid white; padding:10px; margin:5px;">
+        <h2 class="best" id="best" style="display:inline-block;"></h2>
+      </span>
+        <label for="color" id="colorlabel" class="display" style="border: 2px solid white; padding:10px; margin:5px;">
+            PLAYER COLOR
+        </label>
+            <input style="display:none;" type="color" id="color"/>
+        
+        <label for="bgcolor" id="bgcolorlabel" class="display" style="border: 2px solid white; padding:10px; margin:5px;">
+            BG COLOR
+        </label>
+            <input style="display:none;" type="color" id="bgcolor"/>
+      <button id="reset" style="display:inline-block;
+        background-color: black;/*#4CAF50;*/ /* Green */
+        border: 2px solid white;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px;" onclick="
+        var fadeTarget = document.getElementById('hint');
+        var fadeEffect = setInterval(function () {
+        if (!fadeTarget.style.opacity) {
+        fadeTarget.style.opacity = 1;
+        }
+        if (fadeTarget.style.opacity > 0) {
+        fadeTarget.style.opacity -= 0.01;
+        } else {
+        clearInterval(fadeEffect);
+        }
+        }, 10);">Start</button>
+      <button id="fullscreen" style="display:inline-block;
+        background-color: black;/*#4CAF50;*/ /* Green */
+        border: 2px solid white;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px;" onclick="toggleFullScreen();"><i class="fas fa-expand"></i></button>
+      <button id="mobile" style="display:inline-block;
+        background-color: black;/*#4CAF50;*/ /* Green */
+        border: 2px solid white;
+        color: white;
+        padding: 8px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+        margin: 5px;" onclick="mobileMode();"><i class="fa fa-mobile"></i></button>
+    </div>
+    <div id="hint" style="background: #ffffff; border-radius: 5px; position: absolute; bottom: 10px; left: 10px; z-index: 3; padding: 5px;">
+      <p>Press Start!</p>
+    </div>
+    <div id="update" style="background: #ffffff; border-radius: 5px; position: absolute; bottom: 110px; left: 10px; z-index: 30000000000000000; padding: 5px; opacity: 0;">
+      <p>New update detected! Try reloading.</p>
+    </div>
+    <span id="left"  style="position: fixed; bottom: 10px; left: 10px; width: 250px; z-index: 4; background: white; border-radius: 100px; padding: 30px; font-size: 70px; display:none;">LEFT</span>
+    <span id="right" style="position: fixed; bottom: 10px; left: 350px; width: 250px; z-index: 4; background: white; border-radius: 100px; padding: 30px; font-size: 70px; display:none;">RIGHT</span>
+    <span id="jump"  style="position: fixed; bottom: 10px; right: 10px; z-index: 4; background: white; border-radius: 100px; padding: 30px; font-size: 70px; display:none;">JUMP</span>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-body">
+          <pre id="text" style="text-align: center;">
+            
+        </pre>
+          <h4 id="close" onclick="closeModal();" style="cursor:pointer; border: 2px solid white; color: white; background: black; padding:8px 32px; text-align: center; align: center; margin: 5px;">CLOSE</h4>
+        </div>
+      </div>
+    </div>
+    <script defer>
+      var mobile = false;
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent) ||
+         (/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.platform))) {
+          document.querySelector("#left").style.display = "block";
+          document.querySelector("#right").style.display = "block";
+          document.querySelector("#jump").style.display = "block";
+          document.querySelector("#mobile").style.color = "#50c878";
+          mobile = true;
+      }
+      
+      function mobileMode(){
+          if (!mobile){
+              mobile = true;
+              document.querySelector("#left").style.display = "block";
+              document.querySelector("#right").style.display = "block";
+              document.querySelector("#jump").style.display = "block";
+              document.querySelector("#mobile").style.color = "#50c878";
+          }
+          else{
+              mobile = false;
+              document.querySelector("#left").style.display = "none";
+              document.querySelector("#right").style.display = "none";
+              document.querySelector("#jump").style.display = "none";
+              document.querySelector("#mobile").style.color = "white";
+          }
+      }
+      
+      
+      
+      
+      // Get the modal
+      var modal = document.getElementById("myModal");
+      
+      
+      
+      
+      // When the user clicks the button, open the modal 
+      var openModal = function() {
+        modal.style.display = "block";
+      }
+      
+      // When the user clicks on <span> (x), close the modal
+      var closeModal = function() {
+        modal.style.display = "none";
+      }
+      
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function(event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      }
+    </script>
+    <!--DEFAULT LEVEL-->
+    <canvas width="1800px" height = "1000px" id="canvas" style="background:linear-gradient(to top, #58151a, #bc2909, #ba6d09); position:absolute; top:0; left:0;">
+        <!--background:#00102d;-->
+    </canvas>
+    <script defer>
+      function updateCanvasSize(){
+      console.log(window.innerHeight);
+      document.querySelector("#canvas").width = window.innerWidth; 
+      document.querySelector("#canvas").height = window.innerHeight;
+      }
+      
+      updateCanvasSize();
+      
+      // Detect whether device supports orientationchange event, otherwise fall back to
+      // the resize event.
+      var supportsOrientationChange = "onorientationchange" in window, 
+          orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
+      
+      window.addEventListener(orientationEvent, function() {
+          //alert('HOLY ROTATING SCREENS BATMAN:' + window.orientation + " " + screen.width);
+          updateCanvasSize();
+      }, false);
+      function toggleFullScreen() {
+        if (!document.fullscreenElement) {
+              openFullscreen();
+              //document.getElementById("fullscreen").innerHTML = '<i class="fas fa-minimize"></i>';
+        } else {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+              //document.getElementById("fullscreen").innerHTML = '<i class="fas fa-expand"></i>';
+          }
+          else{
+              alert("bad");
+          }
+        }
+      }
+      function openFullscreen() {
+          var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+          elem.requestFullscreen();
+        } else if (elem.webkitRequestFullscreen) { /* Safari */
+          elem.webkitRequestFullscreen();
+        } else if (elem.msRequestFullscreen) { /* IE11 */
+          elem.msRequestFullscreen();
+        }
+      }
+          
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+      <script>
+          window.onkeydown = function(e){
+              if (e.key == "r"){
+                  document.getElementById("reset").click();
+              }
+          }
+      </script>
+    <script src="script.js"></script>
+    <script src="timer.js"></script>
+    <footer style="">Based on TinyFormer, by <a href="https://replit.com/@GameDev46">@GameDev46</a></footer>
+  </body>
+</html>
