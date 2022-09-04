@@ -6,6 +6,6 @@
 ```py
 import pixelRun
 print(pixelRun.version)
->> Current Version: 2.6.1-0
+>> Current Version: 2.6.1-1
 ```
 
