@@ -1,2 +1,11 @@
-# pixel-run
-A fun platformer game with user submitted levels! 
+# Welcome to Pixel Run!
+
+![Enter Image](https://basic-platformer.python660.repl.co/icon.png)
+#### [**Play now!**](https://pixel.mywire.org)
+
+```py
+import pixelRun
+print(pixelRun.version)
+>> Current Version: 2.6.1-0
+```
+
