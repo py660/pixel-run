@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -12,7 +11,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="icon.png">
+    <link rel="preload" href="script.js" as="script">
+    <link rel="preload" href="script.js" as="script">
     <style>
+
+    /* The Modal (background) */
+.startBox {
+  display: block; /* (not) Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.startBoxContent {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
       /*@font-face { font-family: windows; font-weight: bold; src: url('windows_command_prompt.ttf');} BROKEN*/
       /*@font-face { font-family: press-start; font-weight: bold; src: url('PrStart.ttf');}
       @font-face { font-family: silkscreen; font-weight: bold; src: url('silkscr.ttf');} OLD*/
@@ -38,12 +63,12 @@
       .modal {
       display: none; /* Hidden by default */
       position: fixed; /* Stay in place */
-      z-index: 5; /* Sit on top */
+      z-index: 25; /* Sit on top */
       padding: auto; /* Location of the box */
       left: 0;
       top: 0;
       width: 100%; /* Full width */
-      height: 100%; /* Full height */
+      height: 100%;/* Full height */
       overflow: auto; /* Enable scroll if needed */
       background-color: rgb(0,0,0); /* Fallback color */
       background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
@@ -92,6 +117,17 @@
       <script defer async src="https://track.python660.repl.co/script.js"></script>
   </head>
   <body style="padding:0; margin:0; overflow:hidden;">
+
+
+<div id="startBox" class="startBox">
+  <!-- startBox content -->
+  <div class="startBoxContent">
+      <button id="startGame">PLAY</button>
+  </div>
+</div>
+
+
+
     <div style="position:absolute; top:0; left:0; width:100%; height:5% + 20px; z-index:2; background: black; color:white; display:inline-block;">
       <h2 id="title" style="display:inline-block;"><i class="fas fa-play"></i> <b style="color:#70a0e7;">Pixel</b><b style="color:#ec3b3b;">RUN</b></h2>
       <!--button id="forcereset" style="display:inline-block;
@@ -264,7 +300,6 @@
           orientationEvent = supportsOrientationChange ? "orientationchange" : "resize";
       
       window.addEventListener(orientationEvent, function() {
-          //alert('HOLY ROTATING SCREENS BATMAN:' + window.orientation + " " + screen.width);
           updateCanvasSize();
       }, false);
       function toggleFullScreen() {
@@ -293,7 +328,8 @@
       }
           
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+      <!--Why this script?-->
+    <!--script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script-->
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script>
           window.onkeydown = function(e){
@@ -302,8 +338,8 @@
               }
           }
       </script>
-    <script src="script.js"></script>
-    <script src="timer.js"></script>
+    <script src="start.js"></script>
     <footer style="">Based on TinyFormer, by <a href="https://replit.com/@GameDev46">@GameDev46</a></footer>
+      
   </body>
 </html>
