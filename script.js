@@ -65,9 +65,8 @@ document.getElementById("color").addEventListener("input", function(ev){
 });
 document.getElementById("bgcolor").addEventListener("input", function(ev){
     ctx.style.background = this.value;
-    console.log(this.value);
     document.getElementById("bgcolorlabel").style.border = "2px solid " + this.value;
-    console.log(document.getElementById("bgcolorlabel"));
+    
 })
 // ARRAY OF RESPAWN POINT INDICES (24 means the 25th group in the coins array)
 var respawn_i = [24, 25];
@@ -183,7 +182,7 @@ for(var i = 0; i <= 200; i += 2) {
   document.getElementById('maxcollected').innerHTML = '/ ' + (coins.length / 2);
 
 
-function draw () {
+function draw() {
   document.getElementById('deathcount').innerHTML = deaths;
 
 c.globalAlpha = 1;
@@ -226,9 +225,9 @@ input();
 velX = velX * 0.7;
 player.x += velX;
 
-
-
-requestAnimationFrame(draw);
+//setTimeout(function(){
+    requestAnimationFrame(draw);
+//}, 10)
 }
 
 document.getElementById("jump").ontouchstart = function(ev){keys[38] = true;ev.preventDefault()};
@@ -521,7 +520,6 @@ class Point {
               }
             }
       }
-console.log(8);
   if (y - 5 + scrollY <= player.y && y + h + 8 + scrollY >= player.y) { // used to be "&& y + h + 9 + scrollY"
     if (x - player.width - 5 + scrollX <= player.x && x + w + 5 + scrollX >= player.x) {
 
@@ -967,10 +965,11 @@ function reset() {
 }
 
  
+// start prompt implemented, so there is no need.
 
-window.addEventListener("load",function(){
+//window.addEventListener("load",function(){
     draw();
-});
+//});
 
     document.body.addEventListener("keydown", function(e) {
       keys[e.keyCode] = true;
