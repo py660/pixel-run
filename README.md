@@ -16,8 +16,12 @@ TO-DO:
     - [x] ~~Basic RUN~~
     - [ ] Styled RUN
 - [ ] level selection
-- [ ] level editor
+- [X] ~~level editor~~
+- [ ] Organize menu
+- [ ] Organize editor menu items
 - [ ] Issue Tracking
 - [ ] Separate main menu
 - [ ] About and Credits
 - [ ] Help page with troubleshooting tips
+
+- [ ] REDO INTERNAL INFRASTRUCTURE
