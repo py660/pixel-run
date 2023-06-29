@@ -1,12 +1,23 @@
-# Welcome to Pixel Run!
+https://www.freeformatter.com/html-formatter.html#ad-output  
+https://beautifier.io/  
+https://obfuscator.io/
 
-![Enter Image](https://basic-platformer.python660.repl.co/icon.png)
-LOOKING FOR: Anthony W.
-#### [**Play now!**](https://pixel.mywire.org)
-#### [**Use the Editor!**](https://pixel.mywire.org)
-```py
-import pixelRun
-print(pixelRun.version)
->> Current Version: 2.6.1-1
-```
-
+TO-DO:
+- [x] ~~customized color layout~~
+- [x] ~~version tracking~~
+- [x] ~~push alert if there is new update~~
+- [x] ~~teleport block~~
+    - [x] ~~add number to player x and y~~
+    - [x] ~~set player x and y to coords~~
+- [x] ~~GH releases and separate public version~~
+- [x] ~~Custom Domain~~
+- [x] ~~OneWindow for Editor Config~~
+- [x] RUN button
+    - [x] ~~Basic RUN~~
+    - [ ] Styled RUN
+- [ ] level selection
+- [ ] level editor
+- [ ] Issue Tracking
+- [ ] Separate main menu
+- [ ] About and Credits
+- [ ] Help page with troubleshooting tips

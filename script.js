@@ -9,7 +9,7 @@ $.get("/update", function(data){
                 document.getElementById("update").style.opacity = "100%";
             }
         });
-    }, 20000); // Every 20 seconds
+    }, 2000); // Every 2 seconds
 });
 // alert("Also try Text Adventure! https://bit.ly/text660");
 
@@ -37,7 +37,6 @@ let deathsound = new Audio('/GameSounds/restart.wav');
 let bouncesound = new Audio('/GameSounds/bounce.wav');
 
 document.getElementById('reset').addEventListener("click", reset);
-//document.getElementById('forcereset').addEventListener("click", reset);
 
   //x: 1400,
   //y: -300,
@@ -874,7 +873,7 @@ function drawParticles(value) {
 }
 
 function drawBacking() {
-    c.clearRect(0, 0, canvas.width, canvas.height);
+    c.clearRect(0, 0, ctx.width, ctx.height);
 
     c.globalAlpha = 0.8;
 
