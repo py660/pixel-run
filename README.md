@@ -1,6 +1,7 @@
 # Welcome to Pixel Run!
 
-![Enter Image](https://basic-platformer.python660.repl.co/icon.png)
+Created by @py660 on GitHub.
+
 LOOKING FOR: Anthony W.
 #### [**Play now!**](https://pixel.mywire.org)
 #### [**Use the Editor!**](https://pixel.mywire.org)
